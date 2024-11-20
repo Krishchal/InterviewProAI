@@ -5,6 +5,7 @@ import Signup from './pages/Signup'
 import Home from './pages/Home'
 import { useState } from 'react'
 import RefreshHandler from './RefreshHandler'
+import Dashboard from './pages/Dashboard'
 
 function App() {
 
@@ -21,7 +22,12 @@ function App() {
 
         <Route path='/login' element={<Login/>}/>
         <Route path='/signup' element={<Signup/>}/>
+        <Route path='/dashboard' element={<Dashboard/>}/>  {/*just to test*/}
+
+
         <Route path='/home' element={ <PrivateRoute element={ <Home />}/> } />
+        <Route path='/dashboard' element={ <PrivateRoute element={ <Dashboard />}/> } />
+
       </Routes>
     </div>
   )
