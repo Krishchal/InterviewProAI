@@ -1,5 +1,5 @@
 //once user logged in, even if the user change the route to other such as
-//login,signup then until the token is on local storage the user will be redirected to the homepage
+// login,signup then until the token is on local storage the user will be redirected to the homepage
 
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom"
@@ -16,7 +16,7 @@ const RefreshHandler = ({setIsAuthenticated}) => {
                 location.pathname === '/login' ||
                 location.pathname === './signup'
             ){
-                navigate('/home', {replace : false}) ;
+                navigate('/dashboard', {replace : false}) ;
             }
         }
     },[ location, navigate, setIsAuthenticated])

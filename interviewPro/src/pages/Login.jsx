@@ -27,7 +27,9 @@ const [LoginInfo, setLoginInfo] = useState({
             return handleError('Empty Fields are invalid !');
         }
         try {
-            const url = "http://localhost:8010/api/auth/login";
+            // const url = "http://10.200.10.222:8001/api/auth/login";
+             const url = "http://localhost:8010/api/auth/login";
+
             const response = await fetch(url, {
                 method: "POST",
                 headers:{
@@ -36,13 +38,15 @@ const [LoginInfo, setLoginInfo] = useState({
                 body: JSON.stringify(LoginInfo)
             })
             const result = await response.json(); 
-            const { success, message, jwtToken, name, error} = result;
+            const { success, message, jwtToken, name, email, error} = result;
             if(success){
                 handleSuccess(message);
                 localStorage.setItem('token', jwtToken);
                 localStorage.setItem('loggedInUser', name);
+                localStorage.setItem('loggedInEmail', email);
+
                 setTimeout(()=>{
-                    navigate('/home');
+                    navigate('/dashboard');
                 }, 1000)
             }else if(error){
                 const details = error?.details[0].message;
