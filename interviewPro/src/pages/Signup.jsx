@@ -28,7 +28,9 @@ const [signupInfo, setSignupInfo] = useState({
             return handleError('Empty Fields are invalid !');
         }
         try {
+            // const url = "http://10.200.10.222:8001/api/auth/signup";  
             const url = "http://localhost:8010/api/auth/signup";
+
             const response = await fetch(url, {
                 method: "POST",
                 headers:{
@@ -37,9 +39,11 @@ const [signupInfo, setSignupInfo] = useState({
                 body: JSON.stringify(signupInfo)
             })
             const result = await response.json(); 
-            const { success, message, error} = result;
+            console.log(result);
+            const { success, message, error} = result; //
             if(success){
                 handleSuccess(message);
+
                 setTimeout(()=>{
                     navigate('/login');
                 }, 1000)
