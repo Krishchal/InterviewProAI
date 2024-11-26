@@ -81,17 +81,35 @@ const Profile = () => {
   // Download profile as PDF
   const handleDownloadPDF = () => {
     const doc = new jsPDF();
-    doc.text('Candidate Profile', 20, 20);
-    doc.text(`Username: ${userData.username}`, 20, 30);
-    doc.text(`Email: ${userData.email}`, 20, 40);
-
+  
+   
+    doc.setTextColor(0, 0, 255); 
+    doc.setFontSize(22); 
+    doc.text('Interview Pro', doc.internal.pageSize.getWidth() / 2, 20, { align: 'center' });
+  
+    // Add "Candidate Details" below it
+    doc.setTextColor(0, 0, 0); // Reset to black color
+    doc.setFontSize(16); // Slightly larger text for "Candidate Details"
+    doc.text('Candidate Details:', 20, 40);
+  
+    doc.setFontSize(12); 
+    doc.text(`Username: ${userData.username}`, 20, 50);
+    doc.text(`Email: ${userData.email}`, 20, 60);
+  
     if (userExpertise) {
-      doc.text(`Expertise: ${userExpertise.expertise.join(', ')}`, 20, 50);
-      doc.text(`Level: ${userExpertise.level}`, 20, 60);
+      doc.text(`Expertise: ${userExpertise.expertise.join(', ')}`, 20, 70);
+      doc.text(`Level: ${userExpertise.level}`, 20, 80);
     }
-
+  
+    // Add the link at the bottom
+    doc.setFontSize(12);
+    doc.setTextColor(0, 0, 255); // Blue color for link
+    doc.textWithLink('http://www.interviewPro.com.np', 20, 100, { url: 'http://www.interviewPro.com.np' });
+  
+    // Save the PDF
     doc.save('profile.pdf');
   };
+  
 
   return (
     <div className="profile-container">
