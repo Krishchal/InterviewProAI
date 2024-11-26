@@ -15,6 +15,7 @@ import DevOps from "./pages/menuPages/DevOps";
 import MachineLearning from "./pages/menuPages/MachineLearning";
 import SystemDesign from "./pages/menuPages/SystemDesign";
 import GraphicDesign from "./pages/menuPages/GraphicDesign";
+import QuestionPage from "./components/QuestionPage";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -46,6 +47,10 @@ function App() {
           <Route path="machine-learning" element={<MachineLearning />} />
           <Route path="system-design" element={<SystemDesign />} />
           <Route path="graphic-design" element={<GraphicDesign />} />
+
+          {/* Dynamic QuestionPage route */}
+          <Route path="questions" element={<QuestionPage/>} />
+
         </Route>
       </Routes>
     </div>
