@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import "./css/QuestionPage.css"; // Import the CSS file
 
 const QuestionPage = () => {
   const location = useLocation();
@@ -8,6 +9,7 @@ const QuestionPage = () => {
   // Correctly access the recommended_questions array from location.state
   const questions = location.state?.questions?.recommended_questions || [];
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isListening, setIsListening] = useState(false);
 
   // Handle Next Question
   const handleNext = () => {
@@ -18,47 +20,40 @@ const QuestionPage = () => {
     }
   };
 
+  // Handle Start Speech
+  const handleStartSpeech = () => {
+    setIsListening(true);
+    setTimeout(() => {
+      setIsListening(false); // Automatically stop listening after some time
+    }, 5000); // Listening animation duration (5 seconds)
+  };
+
   return (
-    <div style={{ padding: "20px", textAlign: "center" }}>
-      <h1>Recommended Questions</h1>
-      {questions.length > 0 ? (
-        <>
-          <div style={{ margin: "20px auto", fontSize: "20px" }}>
-            {questions[currentIndex]}
-          </div>
-          <button
-            style={{
-              padding: "10px 20px",
-              fontSize: "16px",
-              backgroundColor: "#007bff",
-              color: "white",
-              border: "none",
-              cursor: "pointer",
-              borderRadius: "5px",
-            }}
-            onClick={handleNext}
-          >
+    <div className="question-page-container">
+      <div className="main-box">
+        <h1 className="question-page-title">Recommended Questions</h1>
+        {questions.length > 0 ? (
+          <div className="question-text">{questions[currentIndex]}</div>
+        ) : (
+          <p className="no-questions">No questions to display.</p>
+        )}
+
+        <button
+          className={`microphone-button ${isListening ? "listening" : ""}`}
+          onClick={handleStartSpeech}
+        >
+          {isListening ? "Listening" : "Start Speech"}
+        </button>
+
+        <div className="button-row">
+          <button className="quit-button" onClick={() => navigate("/dashboard")}>
+            Quit Interview
+          </button>
+          <button className="next-button" onClick={handleNext}>
             Next Question
           </button>
-        </>
-      ) : (
-        <p>No questions to display.</p>
-      )}
-      <button
-        style={{
-          marginTop: "20px",
-          padding: "10px 20px",
-          fontSize: "16px",
-          backgroundColor: "red",
-          color: "white",
-          border: "none",
-          cursor: "pointer",
-          borderRadius: "5px",
-        }}
-        onClick={() => navigate("/")}
-      >
-        Go Back
-      </button>
+        </div>
+      </div>
     </div>
   );
 };
