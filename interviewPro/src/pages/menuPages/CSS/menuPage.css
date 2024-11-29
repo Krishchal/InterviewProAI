@@ -3,10 +3,11 @@
   padding: 30px;
   border-radius: 15px; /* Added border radius */
   width: 60%; /* Made it wider */
-  margin: 50px auto; /* Centered the div */
+  margin: 20px auto; /* Centered the div */
   min-height: 300px; /* Made the div a bit taller */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.345);
+  box-shadow: 0 4px 10px rgba(11, 8, 8, 0.345);
   text-align: center;
+  
 }
 
 .header-text {
@@ -33,7 +34,7 @@
 
 .topics-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   margin-bottom: 40px;
 }

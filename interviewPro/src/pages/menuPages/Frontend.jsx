@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
-import "./CSS/Frontend.css";
+import "./CSS/menuPage.css";
 
 const Frontend = () => {
   const [selectedExpertise, setSelectedExpertise] = useState(["frontend"]); // Contains "frontend" by default
   const [level, setLevel] = useState("Beginner");
   const [isButtonDisabled, setButtonDisabled] = useState(true);
   const topics = {
-    Beginner: ["React", "HTML", "CSS", "JavaScript", "JQuery"],
-    Intermediate: ["Angular", "Vue.js", "TypeScript", "Tailwind CSS", "Webpack"],
-    Expert: ["SASS", "Bootstrap", "Node.js", "GraphQL", "ES6"],
+    Beginner: ["HTML", "CSS", "JavaScript", "responsive","box model","meta","versions","tags","margin","ordered list","link","embed","pseudo-class","display"],
+    Intermediate: ["class","variables", "grid", "DOM", "validation","reusability","optimization","events","asynchronous","API","viewport","testing","transitions"],
+    Expert: ["React", "SSR", "context API", "state management", "JSX","custom hooks","error handeling","methodology","routing","optimization","Automatic Design"],
   };
 
   const navigate = useNavigate(); // Initialize navigate
@@ -37,7 +37,7 @@ const Frontend = () => {
     try {
       const response = await axios.post("http://localhost:5001/recommend-questions", payload);
       if (response.status === 200) {
-        alert("Recommended questions loaded!");
+        // alert("Recommended questions loaded!");
         console.log("Recommended Questions:", response.data);
         // Navigate to QuestionPage and pass the questions
         navigate("/dashboard/questions", { state: { questions: response.data } });
