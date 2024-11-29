@@ -37,7 +37,7 @@ const Frontend = () => {
     try {
       const response = await axios.post("http://localhost:5001/recommend-questions", payload);
       if (response.status === 200) {
-        alert("Recommended questions loaded!");
+        // alert("Recommended questions loaded!");
         console.log("Recommended Questions:", response.data);
         // Navigate to QuestionPage and pass the questions
         navigate("/dashboard/questions", { state: { questions: response.data } });
