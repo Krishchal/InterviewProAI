@@ -7,7 +7,7 @@ const QA = () => {
 		Expert: ["Test-Driven Development", "Performance Testing", "Load Testing", "Security Testing", "Test Automation Frameworks"],
 	};
 
-	return <ExpertiseSelector topics={topics} title="QA" apiUrl="http://localhost:5001/recommend-questions" redirectPath="/dashboard/questions" />;
+	return <ExpertiseSelector topics={topics} title="QA" redirectPath="/dashboard/questions" />;
 };
 
 export default QA;

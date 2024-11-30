@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import "./css/QuestionPage.css"; // Import the CSS file
 
 const QuestionPage = () => {
+	const VITE_FLASK_URL = import.meta.env.VITE_FLASK_URL;
 	const location = useLocation();
 	const navigate = useNavigate();
 
@@ -45,14 +46,14 @@ const QuestionPage = () => {
 	// Prevent double speech for the first question
 	useEffect(() => {
 		if (questions.length > 0 && currentIndex === 0) {
-			speakQuestion(questions[currentIndex]);
+			speakQuestion(questions[currentIndex]["question_text"]);
 		}
 	}, [questions, femaleVoice]); // Wait for voice to load before speaking
 
 	// UseEffect to speak the question whenever the currentIndex changes
 	useEffect(() => {
 		if (currentIndex > 0) {
-			speakQuestion(questions[currentIndex]);
+			speakQuestion(questions[currentIndex]["question_text"]);
 		}
 	}, [currentIndex, questions]);
 
@@ -85,10 +86,17 @@ const QuestionPage = () => {
 	};
 
 	const sendAudioToServer = (audioBlob) => {
+		const token = localStorage.getItem("token");
+		const loggedInEmail = localStorage.getItem("loggedInEmail");
+
 		const formData = new FormData();
 		formData.append("file", audioBlob, "audio.wav");
+		formData.append("question", questions[currentIndex]["question_text"]);
+		formData.append("id", questions[currentIndex]["question_id"]);
+		formData.append("token", token);
+		formData.append("loggedInEmail", loggedInEmail);
 
-		fetch("http://127.0.0.1:5001/upload", {
+		fetch(VITE_FLASK_URL, {
 			method: "POST",
 			body: formData,
 		})
@@ -122,7 +130,7 @@ const QuestionPage = () => {
 		<div className="question-page-container">
 			<div className="main-box">
 				<h1 className="question-page-title">Recommended Questions</h1>
-				{questions.length > 0 ? <div className="question-text">{questions[currentIndex]}</div> : <p className="no-questions">No questions to display.</p>}
+				{questions.length > 0 ? <div className="question-text">{questions[currentIndex]["question_text"]}</div> : <p className="no-questions">No questions to display.</p>}
 
 				{/* <button
           className={`microphone-button ${isListening ? "listening" : ""}`}
