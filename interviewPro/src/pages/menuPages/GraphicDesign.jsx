@@ -110,10 +110,10 @@ import ExpertiseSelector from "./ExpertiseSelector";
 
 const GraphicDesign = () => {
 	const topics = {
-		Beginner: ["HTML", "CSS", "JavaScript", "responsive", "box model", "meta", "versions", "tags", "margin", "ordered list", "link", "embed", "pseudo-class", "display"],
-		Intermediate: ["class", "variables", "grid", "DOM", "validation", "reusability", "optimization", "events", "asynchronous", "API", "viewport", "testing", "transitions"],
-		Expert: ["React", "SSR", "context API", "state management", "JSX", "custom hooks", "error handling", "methodology", "routing", "optimization", "Automatic Design"],
-	};
+		Beginner: ["typography", "color theory", "CMYK and RGB", "2D and 3D","logo","symmetry","contrast","line spacing","focal point","storytelling","color-palette","file format","alignment","vector graphics"],
+		Intermediate: ["platforms","mobile devices", "images", "motion graphics", "UI and UX","collaboration","branding","social media","multi-lingual","visual hierarchy","illustration","file organization","touch points","screen size"],
+		Expert: ["virtual reality", "Cutting-edge trends", "AI workflows", "brand", "3D","adaptive design","empathy","gamification","marketing","copyright","workflow","methodology"],
+	  };
 
 	return <ExpertiseSelector topics={topics} title="Graphic Design" apiUrl="http://localhost:5001/recommend-questions" redirectPath="/dashboard/questions" />;
 };

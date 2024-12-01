@@ -111,10 +111,10 @@ import ExpertiseSelector from "./ExpertiseSelector"; // Reusable component for e
 const MachineLearning = () => {
 	// Define topics for Machine Learning
 	const topics = {
-		Beginner: ["Supervised Learning", "Unsupervised Learning", "Linear Regression", "Logistic Regression", "Decision Trees", "K-Nearest Neighbors"],
-		Intermediate: ["Support Vector Machines", "Naive Bayes", "Random Forests", "K-Means Clustering", "Dimensionality Reduction", "PCA", "Neural Networks", "Gradient Boosting"],
-		Expert: ["Deep Learning", "Convolutional Neural Networks", "Recurrent Neural Networks", "Generative Adversarial Networks", "Reinforcement Learning", "Transfer Learning", "AI Ethics"],
-	};
+		Beginner: ["supervised learning", "overfitting", "regression", "decision tree","KNN","bagging","random forest","confusion matrix","K-means","libraries","outlier","neural network","ROC curve","activation-function"],
+		Intermediate: ["learning rate","data normalization", "SVM", "CNN and RNN", "bias-varience","feature engineering","DBSCAN","deep learning","autoregressive model","learning curve","Neural network","hyperparameters","cross validation"],
+		Expert: ["deep learning", "generative model", "reinforcement learning", "Bayesian network", "Transformer model","LSTM","Markov model","backpropagation","training challenges","optimization","VAEs"],
+	  };
 
 	return <ExpertiseSelector topics={topics} title="Machine Learning" apiUrl="http://localhost:5001/recommend-questions" redirectPath="/dashboard/questions" />;
 };

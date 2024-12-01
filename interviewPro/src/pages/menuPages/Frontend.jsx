@@ -117,4 +117,4 @@ const Frontend = () => {
 	return <ExpertiseSelector topics={topics} title="Frontend" apiUrl="http://localhost:5001/recommend-questions" redirectPath="/dashboard/questions" />;
 };
 
-export default Frontend;
+export default Frontend; 

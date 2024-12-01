@@ -111,10 +111,10 @@ import ExpertiseSelector from "./ExpertiseSelector"; // Reusable expertise selec
 const SystemDesign = () => {
 	// Define the topics for System Design
 	const topics = {
-		Beginner: ["System Design Basics", "Scalability", "Load Balancing", "Database Sharding", "Caching", "Horizontal Scaling"],
-		Intermediate: ["Microservices", "CAP Theorem", "API Gateway", "Event Sourcing", "Service Discovery", "Data Consistency"],
-		Expert: ["Distributed Systems", "Fault Tolerance", "Event-Driven Architecture", "CQRS", "Domain-Driven Design", "Scalable Architecture"],
-	};
+		Beginner: ["load banancer", "vertical scaling", "caching", "role","database","API gateway","message queue","statelessness","microservices","ORM","bottleneck","stateless","asynchronous","service registry","stack"],
+		Intermediate: ["URL shortening","recommendation", "low latency", "CAP theorem", "session management","API rate","social media","billing system","invoice system","subscription platform","distributed system","CDN"],
+		Expert: ["web-scale", "fault tolerance", "real-time analytics", "multi-cloud", "deployment pipeline","IoT","industrial equipment","blockchain","event-driven","high frequency trading","high throughput"],
+	  };
 
 	return <ExpertiseSelector topics={topics} title="System Design" apiUrl="http://localhost:5001/recommend-questions" redirectPath="/dashboard/questions" />;
 };
