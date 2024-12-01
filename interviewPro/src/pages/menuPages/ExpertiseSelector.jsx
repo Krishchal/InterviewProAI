@@ -4,7 +4,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./CSS/menuPage.css";
 
-const ExpertiseSelector = ({ topics, title, apiUrl, redirectPath }) => {
+const ExpertiseSelector = ({ topics, title, redirectPath }) => {
+	const VITE_FLASK_URL = import.meta.env.VITE_FLASK_URL;
 	const [selectedExpertise, setSelectedExpertise] = useState([]);
 	const [level, setLevel] = useState("Beginner");
 	const [isButtonDisabled, setButtonDisabled] = useState(true);
@@ -26,7 +27,7 @@ const ExpertiseSelector = ({ topics, title, apiUrl, redirectPath }) => {
 		};
 
 		try {
-			const response = await axios.post(apiUrl, payload);
+			const response = await axios.post(`${VITE_FLASK_URL}/recommend-questions`, payload);
 			if (response.status === 200) {
 				navigate(redirectPath, { state: { questions: response.data } });
 			}
