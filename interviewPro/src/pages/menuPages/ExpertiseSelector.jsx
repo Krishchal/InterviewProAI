@@ -30,6 +30,7 @@ const ExpertiseSelector = ({ topics, title, redirectPath }) => {
 			const response = await axios.post(`${VITE_FLASK_URL}/recommend-questions`, payload);
 			if (response.status === 200) {
 				navigate(redirectPath, { state: { questions: response.data } });
+				console.log(response.data); // test
 			}
 		} catch (error) {
 			console.error("Error fetching recommendations:", error);

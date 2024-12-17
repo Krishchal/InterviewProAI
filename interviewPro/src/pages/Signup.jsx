@@ -32,7 +32,7 @@ const Signup = () => {
 			// const url = "http://10.200.10.222:8001/api/auth/signup";
 			// const url = "http://localhost:8010/api/auth/signup";
 
-			const response = await fetch(`${VITE_NODE_ENDPOINT}/auth/login`, {
+			const response = await fetch(`${VITE_NODE_ENDPOINT}/auth/signup`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
